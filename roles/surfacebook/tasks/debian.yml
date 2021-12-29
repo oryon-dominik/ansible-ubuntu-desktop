@@ -1,0 +1,54 @@
+
+- name: Import the keys used to sign the packages.
+  become: yes
+  ansible.builtin.shell: >
+    wget -qO - https://raw.githubusercontent.com/linux-surface/linux-surface/master/pkg/keys/surface.asc
+    | gpg --dearmor
+    | sudo dd of=/etc/apt/trusted.gpg.d/linux-surface.gpg
+
+- name: Add the repository configuration.
+  become: yes
+  ansible.builtin.shell: >
+    echo "deb [arch=amd64] https://pkg.surfacelinux.com/debian release main"
+    | sudo tee /etc/apt/sources.list.d/linux-surface.list
+
+# - name: Run "apt-get update" as a separate step.
+#   apt:
+#     update_cache: yes
+
+- name: Install the linux-surface kernel and its dependencies.
+  become: yes
+  ansible.builtin.apt:
+    pkg:
+      - linux-image-surface
+      - linux-headers-surface
+      - iptsd
+      - libwacom-surface
+    update_cache: yes
+
+- name: Enable the iptsd service for touchscreen support.
+  become: yes
+  ansible.builtin.systemd:
+    name: iptsd
+    enabled: yes
+
+- name: Install the official secureboot key into the bootloader.
+  # This will import the key that the linux-surface kernel is signed with into the bootloader
+  # so that the kernel is bootable without disabling secureboot.
+  # This package will print instructions to the terminal, so please install it
+  # on its own, not as part of a bigger batch of packages.
+  become: yes
+  ansible.builtin.apt:
+    name: linux-surface-secureboot-mok
+  register: surfacebook_bootloader_instructions
+
+- name: Print bootloader instructions to stdout.
+  ansible.builtin.debug:
+    var: surfacebook_bootloader_instructions.stdout_lines
+
+- name: Update the bootloader's configuration to make sure it was recognized.
+  # The linux-surface kernel will be installed alongside the default kernel provided by the distribution.
+  # This way you have a backup kernel you can use if something goes wrong.
+  # The bootloader will pick up the kernel by default, but you should update.
+  become: yes
+  ansible.builtin.shell: update-grub
