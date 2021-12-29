@@ -2,12 +2,12 @@
 
 
 # Prepare installation folder
-$INSTALL_DIR = $HOME/.install/ansible-ubuntu-desktop
+INSTALL_DIR=$HOME/.install/ansible-ubuntu-desktop
 mkdir -p $INSTALL_DIR
 
 # Install git
-sudo apt update
-sudo apt install git
+sudo apt update --yes
+sudo apt install git --yes
 git clone git@github.com:oryon-dominik/ansible-ubuntu-desktop.git $INSTALL_DIR
 
 
@@ -19,7 +19,7 @@ fi
 
 if ! hash ansible >/dev/null 2>&1; then
     echo "Installing Ansible..."
-    sudo apt update
+    sudo apt update --yes
     sudo apt install software-properties-common ansible --yes
 else
     echo "Ansible already installed."
