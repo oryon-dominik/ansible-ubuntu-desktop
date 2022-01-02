@@ -58,6 +58,7 @@
 # fish_add_path -g "$PYENV_ROOT/bin"
 # fish_add_path -g "$PYENV_ROOT/shims"
 # fish_add_path -g (yarn global bin)
+# TODO: fish autocompletion
 
 # TBD: is this still neccessary with starship?!: TEST IT!
 # set -U VIRTUAL_ENV_DISABLE_PROMPT true
