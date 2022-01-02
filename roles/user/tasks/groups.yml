@@ -1,0 +1,7 @@
+---
+- name: Ensure group "cyberise" exists.
+  ansible.builtin.group:
+    name: cyberise
+    state: present
+    gid: 2525
+
