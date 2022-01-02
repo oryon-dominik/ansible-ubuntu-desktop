@@ -7,3 +7,5 @@ dotfiles_debian_dependencies:
   - fortune-mod
   - fortune-anarchism
   - lolcat
+  - figlet
+  - curl

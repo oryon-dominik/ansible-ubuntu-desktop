@@ -32,6 +32,13 @@
     mkdir -p "{{ user.home }}/.config/fish/functions"
 
 
+- name: Make symlink script executable.
+  become: yes
+  file:
+    path: "{{ user.home }}/.dotfiles/install/ubuntu/symlink_dotfiles.sh"
+    state: file
+    mode: 0755
+
 - name: Install the symlinks.
   ansible.builtin.script: "{{ user.home }}/.dotfiles/install/ubuntu/symlink_dotfiles.sh"
 
@@ -49,14 +56,7 @@
 
 # TODO: fish-path to the fish-config?! / virtualfish to the fish-config if not installed?!
 # TODO: I prefer using a global fish_user_paths / use it via ansible or fish_config?!°°
-# set -U PYENV_ROOT $HOME/.pyenv
-# fish_add_path -g /usr/local/bin /usr/local/sbin
-# fish_add_path -g "$HOME/.local/bin"
-# fish_add_path -g "$HOME/.cargo/bin"
-# fish_add_path -g "$HOME/.poetry/bin"
-# fish_add_path -g "$PYENV_ROOT/bin"
-# fish_add_path -g "$PYENV_ROOT/shims"
-# fish_add_path -g (yarn global bin)
+
 # TODO: fish autocompletion
 
 # TBD: is this still neccessary with starship?!: TEST IT!
