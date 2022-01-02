@@ -7,9 +7,9 @@
     password: $6$stjiFeKPhsWPjHnZ$rgaWCPBTx09ZwXMN5G2qDeUB6yac6bkKrOql6Rg9e.ElAmrSZGjl5Q19W4bWB/uEvq1J5wPrhpXQhN0SC78q/0
     state: present
     shell: /bin/fish
-    groups: cyberise,wheel
+    groups: cyberise,
     append: yes
-    uid: 1337
+    uid: 1000
     update_password: on_create
     generate_ssh_key: yes
     ssh_key_bits: 2048
