@@ -1,0 +1,20 @@
+- name: Install libcamera build-dependecies for debian surface book2 via apt.
+  become: yes
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ libcamera_build_dependencies }}"
+
+- name: Clone libcamera repo to make the camera work on surface book2.
+  become: yes
+  ansible.builtin.git:
+    repo: https://git.libcamera.org/libcamera/libcamera.git
+    dest: /opt/libcamera
+
+- name: Build libcamera.
+  become: yes
+  ansible.builtin.shell: |
+    cd /opt/libcamera
+    meson build -Dpipelines=uvcvideo,ipu3 -Dprefix=/usr -Dgstreamer=enabled
+    ninja -C build install
+    cd -

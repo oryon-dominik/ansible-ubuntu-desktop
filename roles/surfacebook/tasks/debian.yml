@@ -65,7 +65,12 @@
     pkg:
       - surface-dtx-daemon  # better control to the clipboard detachment system
       - surface-control     # allowing control of the dGPU
-      - libcamera           # camera support
+
+
+- name: Install Surfacebook Camera
+  include_tasks: camera.yml
+  tags: surfacebook
+
 
     # If you have issues with lower quality audio, you likely need to adjust your PulseAudio config: in /etc/pulse/daemon.conf set speex-float-5.
 
@@ -123,5 +128,7 @@
 # for details. Note: This only works when the AC is connected.
 
 # TODO: install the font i've already used on nixos
-# TODO: sudo apt autoremove
+- name: Remove all dependencies that are no longer required.
+  apt:
+    autoremove: yes
 
