@@ -1,0 +1,5 @@
+---
+- name: "Install starship from source."
+  ansible.builtin.shell: |
+    set -o pipefail
+    curl --proto '=https' --tlsv1.2 -sSfL https://starship.rs/install.sh | sh -
