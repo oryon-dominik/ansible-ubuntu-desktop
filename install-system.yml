@@ -6,13 +6,9 @@
     - fish
     - user
     - dotfiles
-
-    # - shell
-
-    # - rust
+    - shell
+    - rust
     # - go
     # - python
-
     # - common
-
     # - sway
