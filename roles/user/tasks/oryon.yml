@@ -7,7 +7,7 @@
     password: $6$stjiFeKPhsWPjHnZ$rgaWCPBTx09ZwXMN5G2qDeUB6yac6bkKrOql6Rg9e.ElAmrSZGjl5Q19W4bWB/uEvq1J5wPrhpXQhN0SC78q/0
     state: present
     shell: /bin/fish
-    groups: cyberise,
+    groups: cyberise,video
     append: yes
     uid: 1000
     update_password: on_create

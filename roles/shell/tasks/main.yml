@@ -21,3 +21,7 @@
 - name: Install cheat CLI cheatsheets.
   include_tasks: cheat.yml
   tags: shell
+
+- name: Install dog dns.
+  include_tasks: dog.yml
+  tags: shell

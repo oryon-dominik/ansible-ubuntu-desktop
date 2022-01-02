@@ -1,3 +1,4 @@
+---
 - name: Install libcamera build-dependecies for debian surface book2 via apt.
   become: yes
   ansible.builtin.apt:
