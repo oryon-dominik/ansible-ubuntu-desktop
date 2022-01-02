@@ -50,13 +50,14 @@
 - name: Print bootloader instructions to stdout.
   ansible.builtin.debug:
     var: surfacebook_bootloader_instructions.stdout_lines
+  when: surfacebook_bootloader_instructions is defined
 
 - name: Print warning message to remember on enabling secure-boot.
   ansible.builtin.debug:
     msg:
     - "This installation prints instructions to the terminal that require a reboot."
     - "You have to follow the instructions to enable secure-boot on your device."
-
+  when: surfacebook_bootloader_instructions is defined
 
 - name: Install additional modules for surface book2
   become: yes
