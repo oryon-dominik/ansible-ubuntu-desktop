@@ -51,3 +51,4 @@
   ansible.builtin.file:
     path: "{{ temp.path }}"
     state: absent
+  changed_when: False
