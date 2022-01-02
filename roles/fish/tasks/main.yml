@@ -8,10 +8,13 @@
   become: yes
   ansible.builtin.apt:
     name: fish
+    state: present
     update_cache: yes
 
 - name: Ensure fish is added to /etc/shells.
+  become: yes
   ansible.builtin.lineinfile:
+    state: present
     path: /etc/shells
     regexp: '^/bin/fish'
     line: /bin/fish
