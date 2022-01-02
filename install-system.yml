@@ -1,0 +1,18 @@
+#!/usr/bin/env ansible-playbook --ask-become-pass
+---
+- name: Ubuntu 20.10 desktop provisioning playbook for basic system configuration on localhost.
+  hosts: local
+  roles:
+    - fish
+    - user
+    - dotfiles
+
+    # - shell
+
+    # - rust
+    # - go
+    # - python
+
+    # - common
+
+    # - sway
