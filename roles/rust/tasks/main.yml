@@ -1,0 +1,11 @@
+---
+- name: Install rustup system requirements via apt.
+  become: yes
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ rustup_dependencies }}"
+
+- name: Install rustup, cargo and creates.
+  import_tasks: install-rust.yml
+  become: true
