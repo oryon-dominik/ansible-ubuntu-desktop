@@ -1,5 +1,6 @@
 ---
 - name: Ensure group "cyberise" exists.
+  become: yes
   ansible.builtin.group:
     name: cyberise
     state: present
