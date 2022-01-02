@@ -19,6 +19,12 @@
     ninja -C build install
     cd -
 
+- name: Ensure group video exists.
+  become: yes
+  ansible.builtin.group:
+    name: video
+    state: present
+
 # List the cameras and note their names.
 # sudo gst-device-monitor-1.0 Video
 
@@ -27,3 +33,27 @@
 # sudo gst-launch-1.0 libcameraasrc camera-name="\\\_SB_.PC10.I2C2-CAMF" ! glimagesink
 
 # TODO: add the gst-pipeline to support for a camera-app and browsers.
+
+# list cameras
+# cam --list
+
+# get a view of the video capture:
+# qcam
+
+
+# Right now only applications using libcamera (directly or indirectly, e.g. via
+# the gstreamer plugin) are supported. It is, however, possible to use gstreamer
+# to create a loopback device. To do this, you have to install v4l2loopback-dkms
+# and run
+
+  # sudo modprobe v4l2loopback video_nr=42 card_label="virtualcam" exclusive_caps=1
+
+# to set up the kernel module and
+
+  # gst-launch-1.0 libcamerasrc camera-name='\\_SB_.PCI0.I2C2.CAMF' ! \
+  #     video/x-raw,width=1280,height=720,framerate=30/1,format=NV12 \
+  #     ! videoconvert ! video/x-raw,format=YUY2 ! queue ! \
+  #     v4l2sink device=/dev/video42
+
+# to create the loopback device. Note that you may need to change camera-name,
+# v4l2sink device, and/or other parameters for your setup.
