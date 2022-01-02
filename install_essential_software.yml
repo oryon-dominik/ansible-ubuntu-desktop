@@ -3,4 +3,4 @@
 - name: Ubuntu 20.10 desktop provisioning playbook on localhost
   hosts: local
   roles:
-    - surfacebook
+    - rust
