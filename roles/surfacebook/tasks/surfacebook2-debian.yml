@@ -67,12 +67,8 @@
       - surface-control     # allowing control of the dGPU
 
 
-- name: Install Surfacebook Camera
-  include_tasks: camera.yml
-  tags: surfacebook
 
-
-    # If you have issues with lower quality audio, you likely need to adjust your PulseAudio config: in /etc/pulse/daemon.conf set speex-float-5.
+# If you have issues with lower quality audio, you likely need to adjust your PulseAudio config: in /etc/pulse/daemon.conf set speex-float-5.
 
 # You should install CPU microcode firmware for the latest CPU updates.
 # Debian/Ubuntu: intel-microcode or amd64-microcode
@@ -128,7 +124,5 @@
 # for details. Note: This only works when the AC is connected.
 
 # TODO: install the font i've already used on nixos
-- name: Remove all dependencies that are no longer required.
-  apt:
-    autoremove: yes
+
 

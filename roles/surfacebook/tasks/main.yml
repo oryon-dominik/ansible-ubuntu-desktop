@@ -1,6 +1,21 @@
 ---
 # tasks file for roles/surfacebook
 
-- name: Install Surfacebook Kernel
-  include_tasks: surfacebook2.yml
+# Only debian supported yet.
+- name: Install Surfacebook Kernel from surface-linux for Debian.
+  import_tasks: surfacebook2-debian.yml
   tags: surfacebook
+  when: ansible_facts['os_family']|lower == "debian"
+
+
+- name: Install Surfacebook Camera for Debian.
+  include_tasks: camera.yml
+  tags: surfacebook
+  when: ansible_facts['os_family']|lower == "debian"
+
+
+- name: Remove all dependencies that are no longer required for Debian.
+  become: yes
+  apt:
+    autoremove: yes
+  when: ansible_facts['os_family']|lower == "debian"
