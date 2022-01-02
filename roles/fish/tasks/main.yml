@@ -1,5 +1,6 @@
 ---
 - name: Add fish repository from PPA and install its signing key on Ubuntu target.
+  become: yes
   ansible.builtin.apt_repository:
     repo: ppa:fish-shell/release-3
 
