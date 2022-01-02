@@ -5,9 +5,10 @@
   roles:
     - fish
     - user
-    - dotfiles
-    - shell
     - rust
+    - shell
+    - common
+    - dotfiles
     # - go
     # - python
     # - common

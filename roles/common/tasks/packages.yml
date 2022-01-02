@@ -1,0 +1,7 @@
+---
+- name: Install common programs that don't need customization and are available via apt.
+  become: yes
+  ansible.builtin.apt:
+    pkg:
+      - geany
+    update_cache: yes

@@ -3,6 +3,6 @@
   include_tasks: groups.yml
   tags: groups
 
-- name: Add the user oryon.
+- name: Profile for the user oryon.
   include_tasks: oryon.yml
   tags: users
