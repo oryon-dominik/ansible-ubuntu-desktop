@@ -15,7 +15,7 @@
 
 
 - name: Install nightly RustUp.
-  shell: |
+  ansible.builtin.shell: |
     set -o pipefail
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain nightly
   args:
@@ -28,7 +28,7 @@
 
 
 - name: Install all modern unix cargo crates.
-  shell: |
+  ansible.builtin.shell: |
     set -o pipefail
     cargo install --list | \
     awk 'BEGIN{ code=1 } {if ($1 == "{{ item }}"){ code=0 }} END{ exit code }' || \
