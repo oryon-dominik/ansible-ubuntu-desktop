@@ -7,7 +7,7 @@
   become: yes
   ansible.builtin.apt:
     name: fish
-  update_cache: yes
+    update_cache: yes
 
 - name: Ensure fish is added to /etc/shells.
   ansible.builtin.lineinfile:
