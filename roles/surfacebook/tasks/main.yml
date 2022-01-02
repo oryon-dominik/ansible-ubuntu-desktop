@@ -19,3 +19,8 @@
   apt:
     autoremove: yes
   when: ansible_facts['os_family']|lower == "debian"
+
+- name: Set a hostname for Debian.
+  ansible.builtin.hostname:
+    name: {{ hostname }}
+    use: debian
