@@ -3,14 +3,18 @@
   become: yes
   ansible.builtin.shell: ln -sfv "{{ user.home }}/.dotfiles/common/motd/motd" /etc/
 
+
 - name: We don't need the MOTD help text.
   become: yes
   ansible.builtin.file:
     path: /etc/update-motd.d/10-help-text
     state: absent
 
+
 - name: And we deactivate the dynamic news.
   ansible.builtin.lineinfile:
     path: /etc/default/motd-news
     regexp: '^ENABLED'
     line: ENABLED=0
+    state: present
+    create: yes
