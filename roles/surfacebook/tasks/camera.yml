@@ -18,3 +18,12 @@
     meson build -Dpipelines=uvcvideo,ipu3 -Dprefix=/usr -Dgstreamer=enabled
     ninja -C build install
     cd -
+
+# List the cameras and note their names.
+# sudo gst-device-monitor-1.0 Video
+
+# Test them (note the triple backslashes for escaping on my names used here.. ¯\_(ツ)_/¯)
+# sudo gst-launch-1.0 libcameraasrc camera-name="\\\_SB_.PC10.I2C3-CAMR" ! glimagesink
+# sudo gst-launch-1.0 libcameraasrc camera-name="\\\_SB_.PC10.I2C2-CAMF" ! glimagesink
+
+# TODO: add the gst-pipeline to support for a camera-app and browsers.
