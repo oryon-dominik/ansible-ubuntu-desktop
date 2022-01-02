@@ -2,5 +2,5 @@
 # tasks file for roles/surfacebook
 
 - name: Install Surfacebook Kernel
-  include_tasks: surfacebook.yml
+  include_tasks: surfacebook2.yml
   tags: surfacebook
