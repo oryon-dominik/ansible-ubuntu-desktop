@@ -1,0 +1,73 @@
+---
+- name: Get the current user.
+  user:
+    name: "{{ lookup('env', 'USER') | default('root', True) }}"
+  register: user
+
+
+- name: Install dotfiles dependencies for Debian via apt.
+  become: yes
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ dotfiles_debian_dependencies }}"
+
+
+- name: Clone the dotfiles repository.
+  ansible.builtin.git:
+    repo: https://github.com/oryon-dominik/dotfiles.git
+    dest: "{{ user.home }}/.dotfiles"
+
+
+- name: Modify the Debian MOTD.
+  become: yes
+  ansible.builtin.shell: |
+    ln -sfv "{{ user.home }}/.dotfiles/common/motd/motd" /etc/  # Link the message of the day.
+    rm --force /etc/update-motd.d/10-help-text  # We don't need the help text.
+    sed -i -e 's/ENABLED=1/ENABLED=0/g' /etc/default/motd-news  # And we deactivate the dynamic news.
+
+
+- name: Create some directories.
+  ansible.builtin.shell: |
+    mkdir -p "{{ user.home }}/.virtualenvs"
+    mkdir -p "{{ user.home }}/.config/alacritty"
+
+
+- name: Install the symlinks.
+  ansible.builtin.script: "{{ user.home }}/.dotfiles/install/ubuntu/symlink_dotfiles.sh"
+
+
+- name: Install fisher and fish plugins.
+  ansible.builtin.script: "{{ user.home }}/.dotfiles/common/fish/install_fisher_plugins.fish"
+  args:
+    executable: /bin/fish
+
+# TODO: Add virtualfish (virtualenvwrapper for fish), including plugins
+# pipx install virtualfish
+# vf install
+# vf addplugins compat_aliases
+
+# TODO: fish-path to the fish-config?! / virtualfish to the fish-config if not installed?!
+# TODO: I prefer using a global fish_user_paths / use it via ansible or fish_config?!°°
+# set -U PYENV_ROOT $HOME/.pyenv
+# fish_add_path -g /usr/local/bin /usr/local/sbin
+# fish_add_path -g "$HOME/.local/bin"
+# fish_add_path -g "$HOME/.cargo/bin"
+# fish_add_path -g "$HOME/.poetry/bin"
+# fish_add_path -g "$PYENV_ROOT/bin"
+# fish_add_path -g "$PYENV_ROOT/shims"
+# fish_add_path -g (yarn global bin)
+
+# TBD: is this still neccessary with starship?!: TEST IT!
+# set -U VIRTUAL_ENV_DISABLE_PROMPT true
+
+# install vim-plugins # ! deprecated?!
+# curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
+    # https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+
+- name: Remove all dependencies that are no longer required for Debian.
+  become: yes
+  apt:
+    autoremove: yes
+  when: ansible_facts['os_family']|lower == "debian"
