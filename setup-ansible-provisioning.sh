@@ -27,9 +27,12 @@ fi
 
 # Display installation instructions
 echo ""
-echo "Run the playbooks to install a new kernel."
-echo "  ansible-playbook install_surfacebook_kernel.yml --ask-become-pass"
+echo "Run this playbook to install the surface kernel."
+echo "  ansible-playbook install_surfacebook2_kernel.yml --ask-become-pass"
 echo "  (requires READING the instructions below and a REBOOT thereafter to enable secure-boot)"
+echo ""
+echo "Run these playbooks to install the essential software."
+echo "  ansible-playbook install_essential_software.yml --ask-become-pass"
 echo ""
 echo "cding into the installation directory.."
 echo ""
