@@ -11,6 +11,7 @@
     name: "{{ item }}"
     state: latest
   with_items: "{{ dotfiles_debian_dependencies }}"
+  when: ansible_facts['os_family']|lower == "debian"
 
 
 - name: Clone the dotfiles repository.
@@ -20,11 +21,8 @@
 
 
 - name: Modify the Debian MOTD.
-  become: yes
-  ansible.builtin.shell: |
-    ln -sfv "{{ user.home }}/.dotfiles/common/motd/motd" /etc/  # Link the message of the day.
-    rm --force /etc/update-motd.d/10-help-text  # We don't need the help text.
-    sed -i -e 's/ENABLED=1/ENABLED=0/g' /etc/default/motd-news  # And we deactivate the dynamic news.
+  include_tasks: motd.yml
+  when: ansible_facts['os_family']|lower == "debian"
 
 
 - name: Create some directories.
@@ -32,6 +30,7 @@
     mkdir -p "{{ user.home }}/.virtualenvs"
     mkdir -p "{{ user.home }}/.config/alacritty"
     mkdir -p "{{ user.home }}/.config/fish/functions"
+
 
 - name: Install the symlinks.
   ansible.builtin.script: "{{ user.home }}/.dotfiles/install/ubuntu/symlink_dotfiles.sh"
