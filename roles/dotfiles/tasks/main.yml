@@ -31,7 +31,7 @@
   ansible.builtin.shell: |
     mkdir -p "{{ user.home }}/.virtualenvs"
     mkdir -p "{{ user.home }}/.config/alacritty"
-
+    mkdir -p "{{ user.home }}/.config/fish/functions"
 
 - name: Install the symlinks.
   ansible.builtin.script: "{{ user.home }}/.dotfiles/install/ubuntu/symlink_dotfiles.sh"
@@ -41,6 +41,7 @@
   ansible.builtin.script: "{{ user.home }}/.dotfiles/common/fish/install_fisher_plugins.fish"
   args:
     executable: /bin/fish
+
 
 # TODO: Add virtualfish (virtualenvwrapper for fish), including plugins
 # pipx install virtualfish
