@@ -20,4 +20,4 @@
     line: /bin/fish
     owner: root
     group: root
-    mode: '0644'
+    mode: u=rx,g=rx,o=r
