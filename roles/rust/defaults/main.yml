@@ -1,0 +1,4 @@
+---
+rust_crates_dotfiles_url: https://raw.githubusercontent.com/oryon-dominik/dotfiles/trunk/
+rust_crates_json_path: install/crates/cargo-tools.json
+rust_crates_json_url: "{{ rust_crates_dotfiles_url }}{{ rust_crates_json_path }}"

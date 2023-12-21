@@ -26,14 +26,27 @@
     RUSTUP_HOME: "{{ user.home }}/.rustup"
     CARGO_HOME: "{{ user.home }}/.cargo"
 
+- name: Pull cargo crates from dotfiles github.
+  ansible.builtin.uri: url="{{ rust_crates_json_url }}" return_content=yes
+  register: rust_crates_json_response
+
+- debug: msg="Error - crates not defined."
+  when: rust_crates_json_response["crates"] is not defined
+
+- debug: msg="Success - crates defined =>{{  (rust_crates_json_response.content|from_json)['crates'] }}<="
+  when: (json_response.content|from_json)['crates'] is defined
+
+- name: Parse cargo crates from JSON response.
+  set_fact:
+    rust_crates: "{{ (rust_crates_json_response.content | from_json)['crates'] | json_query(query) }}"
+  vars:
+    query: "[?os == null || os == 'posix'].crate"
 
 - name: Install all modern unix cargo crates.
   ansible.builtin.shell: |
     set -o pipefail
-    cargo install --list | \
-    awk 'BEGIN{ code=1 } {if ($1 == "{{ item }}"){ code=0 }} END{ exit code }' || \
     cargo install {{ item }}
-  with_items: "{{ rustup_cargo_crates|list }}"
+  with_items: "{{ rust_crates|list }}"
   register: crate_install_result
   changed_when: "'Installed package' in crate_install_result.stderr"
   args:
@@ -44,7 +57,7 @@
     RUSTUP_HOME: "{{ user.home }}/.rustup"
     CARGO_HOME: "{{ user.home }}/.cargo"
   when:
-    - rustup_cargo_crates is defined
+    - rust_crates is defined
 
 
 - name: Cleanup temporary installation directory.

@@ -16,7 +16,7 @@
 
 - name: Clone the dotfiles repository.
   ansible.builtin.git:
-    repo: https://github.com/oryon-dominik/dotfiles.git
+    repo: "{{ dotfiles_repo_url }}"
     dest: "{{ user.home }}/.dotfiles"
 
 

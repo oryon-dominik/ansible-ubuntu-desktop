@@ -12,9 +12,10 @@
     update_cache: yes
 
 
-- name: Install starship prompt.
-  include_tasks: starship.yml
-  tags: shell
+# TBD: from cargo??
+# - name: Install starship prompt.
+#   include_tasks: starship.yml
+#   tags: shell
 
 
 - name: Install cheat CLI cheatsheets.
