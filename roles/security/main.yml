@@ -1,0 +1,9 @@
+# TODO: ufw rules
+- role: ufw
+  uwf_rules:
+    - rule: allow
+      interface: eth0
+      to_port: 22
+      protocol: tcp
+
+# TODO: selinux integration

@@ -11,7 +11,7 @@
 
 
 - name: Recursively change ownership of nix to the user.
-  become: yes
+  become: true
   ansible.builtin.file:
     path: /nix
     state: directory
@@ -21,14 +21,14 @@
 
 
 - name: Install curl via apt.
-  become: yes
+  become: true
   ansible.builtin.apt:
     name: curl
     state: latest
 
 
 - name: Install nix.
-  become: yes
+  become: true
   ansible.builtin.shell: sh <(curl -L https://nixos.org/nix/install) --no-daemon
 
 

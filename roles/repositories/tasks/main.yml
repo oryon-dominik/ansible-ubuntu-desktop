@@ -1,0 +1,12 @@
+---
+- name: Setup git ssh-key
+  include_tasks: ssh.yml
+  tags: ssh
+
+- name: Clone public repositories from github to work with.
+  include_tasks: public.yml
+  tags: repositories
+
+- name: Clone private repositories from github to work with.
+  include_tasks: private.yml
+  tags: repositories

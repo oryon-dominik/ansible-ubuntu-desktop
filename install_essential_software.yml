@@ -4,3 +4,52 @@
   hosts: local
   roles:
     # - foo
+
+# TODO: replace snap with flatpak
+# sudo apt install flatpak
+# sudo apt install gnome-software-plugin-flatpak
+# flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# -> https://flathub.org/de
+# flatpak install flathub com.google.Chrome
+# flatpak install flathub com.discordapp.Discord
+# flatpak install flathub org.videolan.VLC
+# flatpak install flathub com.visualstudio.code
+# flatpak install flathub com.github.IsmaelMartinez.teams_for_linux
+# flatpak install flathub md.obsidian.Obsidian
+# flatpak install flathub org.gimp.GIMP
+# flatpak install flathub org.blender.Blender
+# flatpak install flathub org.flameshot.Flameshot
+# flatpak install flathub org.audacityteam.Audacity
+# flatpak install flathub org.telegram.desktop
+
+# flatpak install flathub io.neovim.nvim
+# flatpak install flathub org.geany.Geany  # really?
+# flatpak install flathub dev.lapce.lapce  # maybe better
+
+# flatpak install flathub com.valvesoftware.Steam
+# flatpak install flathub org.filezillaproject.Filezilla
+# flatpak install flathub com.getpostman.Postman
+# flatpak install flathub org.jdownloader.JDownloader
+# flatpak install flathub org.shotcut.Shotcut
+# flatpak install flathub com.github.hluk.copyq
+
+# flatpak install flathub com.simplenote.Simplenote
+
+
+# flatpak install flathub fm.reaper.Reaper  # podcast auto plugin ?!
+
+# flatpak install flathub net.codeindustry.MasterPDFEditor  # test it?!
+
+# flatpak install flathub io.gitlab.o20.word  # have a look if this is "okay" or find a way to use office 365
+
+# flatpak install flathub re.rizin.cutter
+
+# decide between:
+# flatpak install flathub com.github.sdv43.whaler  # docker container management
+# flatpak install flathub io.podman_desktop.PodmanDesktop
+
+
+# youtube ?
+# netflix ?
+# office 365 ?

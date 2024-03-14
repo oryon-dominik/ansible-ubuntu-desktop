@@ -1,0 +1,29 @@
+---
+# tasks file for roles/python
+
+- name: Install pyenv.
+  include_tasks: pyenv.yml
+  tags: python
+
+- name: Install poetry.
+  include_tasks: poetry.yml
+  tags: python
+
+- name: Install pipx.
+  include_tasks: pipx.yml
+  tags: python
+
+- name: Install basic packages.
+  become: true
+  ansible.builtin.pip:
+    name: {{ item }}
+  with_items: "{{ python_essential_packages }}"
+  tags: python
+
+
+# TODO: install system python
+
+- name: Create virtual environments
+  ansible.builtin.shell: # TODO: create venvs with virtualenvwrapper... {{ pyenv_path }}/.pyenvrc && pyenv virtualenv {{ item.py_version }} {{ item.venv_name }}
+         creates="{{ pyenv_path }}/versions/{{ item.py_version }}/envs/{{ item.venv_name }}/bin/python"
+  with_items: "{{ prepared_virtualenvs }}"

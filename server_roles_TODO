@@ -1,0 +1,24 @@
+to add server configs for
+
+
+django web app including postgresql a load balancer and a minio storage for static-files, maybe secrets too?!
+
+vue web app on static storage
+
+a fast api with and without postgres
+
+extra postgres server
+
+
+
+on the companies infra:
+
+jupyter server
+hedgedoc server
+
+forgot something?!
+
+restic-backups
+drone.ci ?!
+
+revealjs template for the presentations

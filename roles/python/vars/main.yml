@@ -1,0 +1,48 @@
+---
+# TODO: python 3.12
+pyenv_global: 3.10.1
+python_versions:
+  - 3.10.1
+pyenv_path: "{{ ansible_env.USER }}/.pyenv"
+
+# pyenv_env: "user"
+# pyenv_path: "{% if pyenv_env == 'user' %}{{ ansible_env.HOME }}/.pyenv{% else %}/usr/local/pyenv{% endif %}"
+# TODO: essential packages from dotfiles repo common file json
+python_essential_packages:
+  - passlib
+  - cryptography
+  - sshconf
+  - pip-tools
+  - httpx
+  - rich
+  - typer
+  - pendulum
+  - humanize
+  - numpy
+  - jupyter
+  - pwntools
+python_debian_dependencies:
+  - git
+  - make
+  - build-essential
+  - libssl-dev
+  - zlib1g-dev
+  - libbz2-dev
+  - libreadline-dev
+  - libsqlite3-dev
+  - wget
+  - curl
+  - llvm
+  - libncursesw5-dev
+  - xz-utils
+  - tk-dev
+  - libxml2-dev
+  - libxmlsec1-dev
+  - libffi-dev
+  - liblzma-dev
+
+#  - libncurses5-dev
+#  - python3-openssl
+
+prepared_virtualenvs:
+  - { venv_name: "free", py_version: "3.10.1" }

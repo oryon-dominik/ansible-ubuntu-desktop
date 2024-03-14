@@ -1,0 +1,5 @@
+---
+- name: Consistent user interface on gnome.
+  include_tasks: gnome-user-interface.yml
+  tags: ui
+  when: ansible_facts['os_family']|lower == "debian"

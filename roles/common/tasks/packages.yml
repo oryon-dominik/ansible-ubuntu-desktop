@@ -1,7 +1,13 @@
 ---
 - name: Install common programs that don't need customization and are available via apt.
-  become: yes
+  become: true
   ansible.builtin.apt:
-    pkg:
+    pkg:  # TODO: inject items (plural) from variables
       - geany
     update_cache: yes
+
+
+## 
+# todo security packages for cutter, burp-suite-community ... etc
+
+# TODO: fonts-powerline

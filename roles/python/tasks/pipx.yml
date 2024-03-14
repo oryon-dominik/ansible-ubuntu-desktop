@@ -1,0 +1,6 @@
+# install pipx..
+
+# # install pipx
+# # todo: install via the repo?
+# python -m pip install --user pipx
+# python -m pipx ensurepath

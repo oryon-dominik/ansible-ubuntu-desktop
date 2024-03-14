@@ -17,7 +17,7 @@
 - name: Install nightly RustUp.
   ansible.builtin.shell: |
     set -o pipefail
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain nightly
+    "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain {{ rustup_toolchain }}"
   args:
     creates: "{{ user.home }}/.cargo/bin/rustup"
     executable: /bin/bash

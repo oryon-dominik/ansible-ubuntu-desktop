@@ -1,0 +1,3 @@
+---
+rustup_toolchain: stable
+# rustup_toolchain: nightly

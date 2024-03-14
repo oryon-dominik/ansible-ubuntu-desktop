@@ -1,0 +1,43 @@
+---
+- name: Install pyenv.
+  git:
+    repo: https://github.com/pyenv/pyenv.git
+    dest: "{{ pyenv_path }}"
+    update: yes
+
+
+- name: Install pyenv-update plugin
+  git:
+    repo: https://github.com/pyenv/pyenv-update.git
+    dest: "{{ pyenv_path }}/plugins/pyenv-update"
+    update: yes
+
+
+- name: Update pyenv interpreter list
+  shell: pyenv update
+  environment:
+    PYENV_ROOT: "{{ pyenv_path }}"
+    PATH: "$PYENV_ROOT/bin:$PATH"
+
+
+- name: Install Python interpreters "{{ python_versions }}"
+  shell: "pyenv install {{ item }}"
+  args:
+    creates: "{{ pyenv_path }}/versions/{{ item }}/bin/python"
+  with_items: "{{ python_versions }}"
+  environment:
+    PYENV_ROOT: "{{ pyenv_path }}"
+    PATH: "$PYENV_ROOT/bin:$PATH"
+
+
+- name: Set pyenv global.
+  shell: pyenv global {{ pyenv_global }} && pyenv rehash
+  environment:
+    PYENV_ROOT: "{{ pyenv_path }}"
+    PATH: "$PYENV_ROOT/bin:$PATH"
+
+
+# python -m pip install --upgrade pip
+
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init - {% if pyenv_env != 'user' %}--no-rehash{% endif %} )" # For a system install, the shims dir will not be writable by users, disable rehashing

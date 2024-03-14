@@ -1,6 +1,6 @@
 ---
 - name: Create the user.
-  become: yes
+  become: true
   ansible.builtin.user:
     name: oryon
     comment: Oryon himself.

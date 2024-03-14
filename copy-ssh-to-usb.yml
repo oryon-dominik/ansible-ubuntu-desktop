@@ -1,0 +1,8 @@
+# TODO: copy the locally used ssh key connected github and use it as auth for
+# cloning all the private repos on your commandline
+
+# check if usb is mounted on /media/<username>
+# copy <stick>/.ssh/SSH_RSA_GITHUB_ANSIBLE.. ~/.ssh/
+# setup ssh config from dotfiles?!
+
+# what about the api keys I'm using?!

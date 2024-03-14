@@ -1,19 +1,19 @@
 
 - name: Import the keys used to sign the packages.
-  become: yes
+  become: true
   ansible.builtin.shell: >
     wget -qO - https://raw.githubusercontent.com/linux-surface/linux-surface/master/pkg/keys/surface.asc
     | gpg --dearmor
     | sudo dd of=/etc/apt/trusted.gpg.d/linux-surface.gpg
 
 - name: Add the repository configuration.
-  become: yes
+  become: true
   ansible.builtin.shell: >
     echo "deb [arch=amd64] https://pkg.surfacelinux.com/debian release main"
     | sudo tee /etc/apt/sources.list.d/linux-surface.list
 
 - name: Install the linux-surface kernel and its dependencies.
-  become: yes
+  become: true
   ansible.builtin.apt:
     pkg:
       - linux-image-surface
@@ -23,7 +23,7 @@
     update_cache: yes
 
 - name: Enable the iptsd service for touchscreen support.
-  become: yes
+  become: true
   ansible.builtin.systemd:
     name: iptsd
     enabled: yes
@@ -33,7 +33,7 @@
   # so that the kernel is bootable without disabling secureboot.
   # ! This package will print instructions to the terminal that require a reboot
   # ! you have to follow the instructions to enable secure-boot on your device.
-  become: yes
+  become: true
   ansible.builtin.apt:
     name: linux-surface-secureboot-mok
   register: surfacebook_bootloader_instructions
@@ -43,7 +43,7 @@
   # The linux-surface kernel will be installed alongside the default kernel provided by the distribution.
   # This way you have a backup kernel you can use if something goes wrong.
   # The bootloader will pick up the kernel by default, but you should update.
-  become: yes
+  become: true
   ansible.builtin.shell: update-grub
 
 
@@ -60,7 +60,7 @@
   when: surfacebook_bootloader_instructions is defined
 
 - name: Install additional modules for surface book2
-  become: yes
+  become: true
   ansible.builtin.apt:
     pkg:
       - surface-dtx-daemon  # better control to the clipboard detachment system

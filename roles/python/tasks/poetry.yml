@@ -1,0 +1,7 @@
+# install poetry
+
+# # And poetry
+# curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+# source $HOME/.poetry/env
+# # set the path inline with virtualfish TODO: or preferably virtualfishs path to /Envs
+# poetry config virtualenvs.path $HOME/.virtualenvs/

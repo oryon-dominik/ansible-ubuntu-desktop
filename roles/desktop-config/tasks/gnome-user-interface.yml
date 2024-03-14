@@ -1,0 +1,60 @@
+---
+# TODO:
+# taskbar
+# dock
+# energy
+# colors
+
+# ...
+
+
+# background-image
+# TBD: after cloning secret shared media or journal repo?
+# so we had a dependency to "repositories"
+
+# depending on the colorsheme (or just set both?!)
+# gsettings get org.gnome.desktop.interface color-scheme
+# gsettings set org.gnome.desktop.background picture-uri-dark file:///home/foobar-bang/y.jpg
+# gsettings set org.gnome.desktop.background picture-uri file:///home/foobar-bang/y.jpg
+
+# theme
+
+# sudo apt update
+# sudo apt install snapd
+# sudo snap install dracula-gtk-theme
+
+# dracula gtk theme
+# gnome tweaks
+# sudo add-apt-repository universe
+# sudo apt install gnome-tweaks
+
+
+# gnome terminal dracula colors
+# sudo apt-get install dconf-cli
+# git clone https://github.com/dracula/gnome-terminal
+# cd gnome-terminal
+# ./install.sh 
+# TODO: add automation parameters to that script (Dracula, etc..)
+
+
+# gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+# gsettings set org.gnome.desktop.interface gtk-theme Dracula
+# gsettings set org.gnome.desktop.wm.preferences theme Dracula
+
+# gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
+# gsettings set org.gnome.shell.extensions.dash-to-dock dock-position TOP
+# gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode FIXED
+# gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 24
+# gsettings set org.gnome.shell.extensions.dash-to-dock unity-backlit-items false
+# gsettings set org.gnome.shell.extensions.dash-to-dock autohide true
+# gsettings set org.gnome.shell.extensions.dash-to-dock autohide-in-fullscreen true
+# gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
+# gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
+# gsettings set org.gnome.shell.extensions.dash-to-dock intellihide true
+# gsettings set org.gnome.shell.extensions.dash-to-dock intellihide-mode ALL_WINDOWS
+# gsettings set org.gnome.shell.extensions.dash-to-dock hide-delay 0,2
+# gsettings set org.gnome.shell.extensions.dash-to-dock hotkeys-overlay true
+# gsettings set org.gnome.shell.extensions.dash-to-dock hotkeys-show-dock true
+# gsettings set org.gnome.shell.extensions.dash-to-dock icon-size-fixed true
+# gsettings set org.gnome.shell.extensions.dash-to-dock isolate-locations false
+# gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false

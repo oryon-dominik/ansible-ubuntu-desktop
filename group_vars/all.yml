@@ -1,0 +1,10 @@
+---
+# http://docs.ansible.com/ansible/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
+# aptcachetime: 3600
+# locale: "de_DE.UTF-8"
+# timezone: "Europe/Berlin"
+# ssh:
+#   start: true
+#   service_enabled: true
+#   password_auth: false
+#   root_login: false

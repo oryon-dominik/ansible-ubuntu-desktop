@@ -1,0 +1,40 @@
+
+
+# - name: Register OS Family Variable
+#   ansible.builtin.shell: cat /etc/*-release | grep ID_LIKE | awk -F '=' '{print $2}'
+#   register: os_family
+
+# - name: Adjust id on arch
+#   lineinfile:
+#     dest: /etc/os-release
+#     regexp: 'ID=.*'
+#     line: 'ID=arch'
+#     state: present
+#   when: ansible_os_family == "Archlinux"
+
+
+# NOTE: Fully quoted because of the ': ' on the line. See the Gotchas in the YAML docs.
+# - name: Validate the sudoers file before saving
+#   ansible.builtin.lineinfile:
+#     path: /etc/sudoers
+#     state: present
+#     regexp: '^%ADMIN ALL='
+#     line: '%ADMIN ALL=(ALL) NOPASSWD: ALL'
+#     validate: /usr/sbin/visudo -cf %s
+
+# ...
+# - name: Install the correct surface-linux kernel for Debian
+#   import_tasks: debian.yml
+#   when: os_family.stdout == "debian"
+
+
+# # Install docker
+# sudo apt install -y docker.io
+# # sudo systemctl start docker
+# sudo systemctl enable docker
+
+# exiftool
+
+# micro cli-editor
+
+# nnn?!

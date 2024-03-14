@@ -1,0 +1,4 @@
+---
+- name: API Connection.
+  include_tasks: browser-extension.yml
+  tags: lastpass

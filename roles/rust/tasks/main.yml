@@ -1,13 +1,13 @@
 ---
 - name: Install rustup system requirements via apt.
-  become: yes
+  become: true
   ansible.builtin.apt:
     name: "{{ item }}"
     state: latest
   with_items: "{{ rustup_dependencies }}"
 
 - name: Install crate system dependencies via apt.
-  become: yes
+  become: true
   ansible.builtin.apt:
     name: "{{ item }}"
     state: latest
