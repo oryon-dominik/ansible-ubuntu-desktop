@@ -23,6 +23,8 @@
 # flatpak install flathub org.audacityteam.Audacity
 # flatpak install flathub org.telegram.desktop
 
+# flatpak install flathub io.bassi.Amberol  # music player
+
 # flatpak install flathub io.neovim.nvim
 # flatpak install flathub org.geany.Geany  # really?
 # flatpak install flathub dev.lapce.lapce  # maybe better
